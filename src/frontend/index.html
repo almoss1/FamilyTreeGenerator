@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,6 +14,90 @@
         <input type="text" name="breakfast">
         <button type="submit">Submit!</button>
     </form>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Family Tree Form</h1>
+        <p>This form is to be filled out with everything correctly. Please double check to make sure everything is right
+            before submitting.</p>
+
+        <form action="/my-form-route" method="post" enctype="application/json">
+            <div class="form-group">
+                <label for="YNAME">Enter your name:</label>
+                <input class="form-control" type="text" name="YNAME" placeholder="First Last">
+                <label for="PHONE">Enter your Phone Number:</label>
+                <input class="form-control" type="tel" name="PHONE" placeholder="Phone Number">
+                <label for="AGE"> Enter your age: </label>
+                <input class="form-control" type="number" name="AGE" placeholder="Age">
+            </div>
+
+            <div class="form-group">
+                <label for="mom">Enter your mother's phone number:</label>
+                <input class="form-control" type="tel" name="mom" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="dad">Enter your dad's phone number:</label>
+                <input class="form-control" type="tel" name="dad">
+            </div>
+
+            <label for="">Children:</label>
+            <div id="childrenInputs">
+                <div class="form-group row">
+                    <input class="col form-control" type="text" placeholder="Name" name="children[0]['name']">
+                    <input type="text" class="col form-control" placeholder="Phone Number?" name="children[0]['phone']">
+                    <input type="number" class="col form-control" placeholder="Age" name="children[0]['phone']">
+                </div>
+            </div>
+            <!-- <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block"> hello</button> -->
+            <button id="addChildren" class="form-control" style="color: blue;">Add another
+                Child</button>
+            <button type="submit">Submit</button>
+        </form>
+
+
+
+        <div class="d-none" id="child-input-container">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#addChildren").click(function () {
+                $("#childrenInputs").append("
+                    < input class= `col form-control` type = `text` placeholder = `Name` name = `children[0]['name']` >
+                    <input type=`text` class= `col form-control` placeholder = `Phone Number?` name = `children[0]['phone']` >
+                    <input type=`number`  class= `col form-control` placeholder = `Age` name = `children[0][' phone']` >
+                    "")
+            })
+        });
+    </script>
 </body>
 
 </html>

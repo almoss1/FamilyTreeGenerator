@@ -39,34 +39,34 @@
 
         <form action="/my-form-route" method="post" enctype="application/json">
             <div class="form-group">
-                <label for="YNAME">Enter your name:</label>
-                <input class="form-control" type="text" name="YNAME" placeholder="First Last">
-                <label for="PHONE">Enter your Phone Number:</label>
-                <input class="form-control" type="tel" name="PHONE" placeholder="Phone Number">
-                <label for="AGE"> Enter your age: </label>
-                <input class="form-control" type="number" name="AGE" placeholder="Age">
+                <label for="name">Enter your name:</label>
+                <input class="form-control" type="text" name="name" placeholder="First Last">
+                <label for="phone">Enter your Phone Number:</label>
+                <input class="form-control" type="tel" name="phone" placeholder="Phone Number">
+                <label for="age"> Enter your age: </label>
+                <input class="form-control" type="number" name="age" placeholder="Age">
             </div>
 
             <div class="form-group">
-                <label for="mom">Enter your mother's phone number:</label>
-                <input class="form-control" type="tel" name="mom" placeholder="">
+                <label for="moms_number">Enter your mother's phone number:</label>
+                <input class="form-control" type="tel" name="moms_number" placeholder="">
             </div>
             <div class="form-group">
-                <label for="dad">Enter your dad's phone number:</label>
-                <input class="form-control" type="tel" name="dad">
+                <label for="dads_number">Enter your dad's phone number:</label>
+                <input class="form-control" type="tel" name="dads_number">
             </div>
 
-            <label for="">Children:</label>
+            <label for="childrens_numbers">Children:</label>
             <div id="childrenInputs">
                 <div class="form-group row">
-                    <input type="text" class="col form-control" placeholder="Name" name="children[0]['name']">
-                    <input type="text" class="col form-control" placeholder="Phone Number?" name="children[0]['phone']">
-                    <input type="number" class="col form-control" placeholder="Age" name="children[0]['phone']">
+                    <input type="tel" class="col form-control" placeholder="Number" name="childrens_numbers[0]">
                 </div>
             </div>
             <!-- <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block"> hello</button> -->
             <button type="button" id="addChildren" class="form-control" style="color: blue;">Add another
                 Child</button>
+            <button type="button" id="removeChild" class="form-control" style="color: red;">Remove Child</button>
+           
             <button type="submit">Submit</button>
         </form>
 
@@ -90,16 +90,22 @@
     <script>
         $(document).ready(function () {
             let numChildren = 0;
-            $("#addChildren").click(function () {
+            $("#addChildren").click(addChild);
+            $("#removeChild").click(removeChild);
+
+            function addChild() {
                 numChildren += 1;
                 $("#childrenInputs").append(`
                     <div class="form-group row">
-                    <input class="col form-control" type ="text" placeholder="Name" name="children[${numChildren}]['name']">
-                    <input type="text" class="col form-control" placeholder="Phone Number?" name="children[${numChildren}]['phone']">
-                    <input type="number"  class="col form-control" placeholder="Age" name="children[${numChildren}][' phone']">
+                    <input type="tel" class="col form-control" placeholder="Number" name="childrens_numbers[${numChildren}]">
                     </div>
                 `);
-            });
+            }
+
+            function removeChild() {
+                numChildren -=1;
+                $("#childrenInputs").children().last().remove();
+            }
         });
     </script>
 </body>
